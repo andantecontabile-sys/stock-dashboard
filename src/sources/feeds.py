@@ -15,6 +15,12 @@
     個人心得」，實測隔日更新、單篇上萬字、含具體個股討論（例：EP687 完整分析 GOOG）。
     這是目前唯一驗證過、內容夠格餵給抽取器的股癌替代來源。
     歸屬顯示為第三方轉述，dashboard 上不會標成股癌本人發言。
+
+    已知環境差異：Substack（經 Fastly）會擋 GitHub Actions 的機房 IP（403），
+    換瀏覽器標頭重試也一樣被擋——本機執行完全正常，只有雲端排程受影響。
+    直連失敗時改走 api.rss2json.com（獨立第三方的 RSS→JSON 代理服務）重試一次，
+    只有這個來源會用到它，YouTube／podcast 直連正常不受影響。
+
     另外查過 vocus.cc 上一組「逐字稿」帳號（ober），文章本身公開可讀，
     但沒有正式的文章列表 API，只能反查前端內部端點才能自動發現新文章 ——
     穩定性差、也接近規格要避免的「繞過」精神，故未採用。
@@ -201,6 +207,35 @@ _BROWSER_HEADERS = {
     "Accept-Language": "zh-TW,zh;q=0.9,en;q=0.8",
 }
 
+# 直連都失敗時（實測：Substack 對 GitHub Actions 的機房 IP 段回 403，換瀏覽器標頭也一樣）
+# 最後改走這個公開的 RSS→JSON 代理，它是獨立第三方服務、不是我們控制的基礎設施 ——
+# 只在直連失敗時才會用到，YouTube／podcast 這類直連正常的來源不會經過它。
+RSS2JSON_ENDPOINT = "https://api.rss2json.com/v1/api.json"
+
+
+def _fetch_via_proxy(feed: Feed) -> List[FeedEntry]:
+    import requests
+
+    response = requests.get(RSS2JSON_ENDPOINT, params={"rss_url": feed.url}, timeout=40)
+    response.raise_for_status()
+    payload = response.json()
+    if payload.get("status") != "ok":
+        raise FetchError("{}：代理服務回應異常（{}）".format(
+            feed.name, payload.get("message", "未知錯誤")))
+
+    entries = []
+    for item in payload.get("items", []):
+        raw = item.get("content") or item.get("description") or ""
+        entries.append(FeedEntry(
+            feed_key=feed.key,
+            feed_name=feed.name,
+            title=(item.get("title") or "").strip(),
+            summary=_strip_html(raw)[:MAX_SUMMARY_CHARS],
+            published=_parse_date(item.get("pubDate") or ""),
+            link=(item.get("link") or "").strip(),
+        ))
+    return entries
+
 
 def fetch(feed: Feed, lookback_days: int = LOOKBACK_DAYS) -> List[FeedEntry]:
     """抓單一 feed。失敗時丟 FetchError，由呼叫端轉成資料缺漏（鐵則 7）。"""
@@ -223,12 +258,16 @@ def fetch(feed: Feed, lookback_days: int = LOOKBACK_DAYS) -> List[FeedEntry]:
             if index < len(header_attempts) - 1:
                 time.sleep(2)
         except ET.ParseError as exc:
-            raise FetchError("{} feed 不是合法 XML：{}".format(feed.name, exc)) from exc
+            last_exc = exc
 
-    if root is None:
-        raise FetchError("{} feed 取用失敗：{}".format(feed.name, last_exc)) from last_exc
-
-    entries = _parse_rss(root, feed) if root.tag == "rss" else _parse_atom(root, feed)
+    if root is not None:
+        entries = _parse_rss(root, feed) if root.tag == "rss" else _parse_atom(root, feed)
+    else:
+        try:
+            entries = _fetch_via_proxy(feed)
+        except (requests.RequestException, ValueError) as proxy_exc:
+            raise FetchError("{} feed 直連與代理皆失敗：{}｜{}".format(
+                feed.name, last_exc, proxy_exc)) from proxy_exc
 
     cutoff = config.today() - dt.timedelta(days=lookback_days)
     recent = [e for e in entries if e.published and e.published >= cutoff]

@@ -1,0 +1,69 @@
+name: 每日更新選股儀表板
+
+on:
+  schedule:
+    # cron 一律是 UTC。台北 = UTC+8。
+    # 22:00 台北：證交所 OpenAPI 在 21:00 仍只回傳前一交易日資料（見 CLAUDE.md），22:00 後才穩定抓得到當天收盤。
+    - cron: "0 14 * * 1-5"
+  workflow_dispatch:          # 在 Actions 頁面可手動按一下就跑
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: update
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: 單元測試（CLAUDE.md §10：commit 前先跑 pytest）
+        run: python -m pytest tests/ -q
+
+      # cache/ 存的是 API 回應。歷史序列一次抓下來要跑很久（單一標的約 3–4 分鐘，
+      # 受證交所節流限制），把它跨天保留下來，之後只需要補當天新資料。
+      - name: 還原 API 快取
+        uses: actions/cache@v4
+        with:
+          path: cache
+          key: api-cache-${{ github.run_id }}
+          restore-keys: |
+            api-cache-
+
+      - name: 產生儀表板
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TZ: Asia/Taipei
+        run: python -m src.main --no-open
+
+      - name: 驗證輸出存在
+        run: |
+          test -n "$(ls output/dashboard_*.html 2>/dev/null)" || (echo "沒有產出任何 HTML" && exit 1)
+
+      - name: 發布到 docs/（GitHub Pages 來源）
+        run: |
+          mkdir -p docs
+          touch docs/.nojekyll
+          LATEST=$(ls -t output/dashboard_*.html | head -1)
+          cp "$LATEST" docs/index.html
+
+      - name: 提交結果
+        run: |
+          git config user.name "dashboard-bot"
+          git config user.email "actions@github.com"
+          git add docs/ inbox/
+          git diff --staged --quiet || git commit -m "資料更新 $(TZ=Asia/Taipei date +'%Y-%m-%d %H:%M')"
+          git push

@@ -1,0 +1,10 @@
+.venv/
+cache/
+output/
+debug/raw/
+.env
+__pycache__/
+.pytest_cache/
+inbox/archive/
+data/ticker_master.csv
+.claude/

@@ -44,10 +44,15 @@ jobs:
           print('OK:', len(d['securities']), '檔標的')
           "
 
+      - name: 同步至 docs 資料夾
+        run: |
+          mkdir -p docs
+          cp -r index.html manifest.webmanifest sw.js data icons .nojekyll docs/
+
       - name: 提交結果
         run: |
           git config user.name  "dashboard-bot"
           git config user.email "actions@github.com"
-          git add data/ inbox/
+          git add data/ inbox/ docs/
           git diff --staged --quiet || git commit -m "資料更新 $(date +'%Y-%m-%d %H:%M')"
           git push

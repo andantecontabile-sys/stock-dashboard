@@ -191,21 +191,42 @@ def _parse_atom(root, feed: Feed) -> List[FeedEntry]:
     return entries
 
 
+# Substack（透過 Fastly）對表明身分的機器人 UA + GitHub Actions 的機房 IP 段會回 403，
+# 本機用同一支程式完全通 —— 不是程式邏輯錯，是對方的反爬蟲規則。
+# 用一般瀏覽器會送出的標頭重試，多數這類規則只針對「看起來像爬蟲」的請求。
+_BROWSER_HEADERS = {
+    "User-Agent": ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                    "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"),
+    "Accept": "application/rss+xml, application/xml;q=0.9, */*;q=0.8",
+    "Accept-Language": "zh-TW,zh;q=0.9,en;q=0.8",
+}
+
+
 def fetch(feed: Feed, lookback_days: int = LOOKBACK_DAYS) -> List[FeedEntry]:
     """抓單一 feed。失敗時丟 FetchError，由呼叫端轉成資料缺漏（鐵則 7）。"""
+    import time
+
     import requests
 
-    try:
-        response = requests.get(
-            feed.url, timeout=40,
-            headers={"User-Agent": config.USER_AGENT},
-        )
-        response.raise_for_status()
-        root = ET.fromstring(response.content)
-    except requests.RequestException as exc:
-        raise FetchError("{} feed 取用失敗：{}".format(feed.name, exc)) from exc
-    except ET.ParseError as exc:
-        raise FetchError("{} feed 不是合法 XML：{}".format(feed.name, exc)) from exc
+    header_attempts = ({"User-Agent": config.USER_AGENT}, _BROWSER_HEADERS)
+    root = None
+    last_exc: Optional[Exception] = None
+
+    for index, headers in enumerate(header_attempts):
+        try:
+            response = requests.get(feed.url, timeout=40, headers=headers)
+            response.raise_for_status()
+            root = ET.fromstring(response.content)
+            break
+        except requests.RequestException as exc:
+            last_exc = exc
+            if index < len(header_attempts) - 1:
+                time.sleep(2)
+        except ET.ParseError as exc:
+            raise FetchError("{} feed 不是合法 XML：{}".format(feed.name, exc)) from exc
+
+    if root is None:
+        raise FetchError("{} feed 取用失敗：{}".format(feed.name, last_exc)) from last_exc
 
     entries = _parse_rss(root, feed) if root.tag == "rss" else _parse_atom(root, feed)
 

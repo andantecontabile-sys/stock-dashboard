@@ -5,10 +5,19 @@
 
 各來源的實際可用度（2026-08-14 實測，原始回應在 debug/probe/）：
 
-  股癌 Gooaye（SoundOn podcast）
+  股癌 Gooaye（SoundOn podcast，官方本尊）
     feed 活著，687 集。但標題只有「EP687 | 🐧」，description 幾乎全是業配
     （實測最新一集通篇中秋禮盒廣告，零個股票代號）。選股內容在音檔裡，
-    要取得必須做語音轉文字 —— 見 TRANSCRIPTION_NOTE。
+    要取得必須做語音轉文字，尚未實作 —— 見 TRANSCRIPTION_NOTE。
+
+  股人筆記（Gordon，第三方筆記，非股癌官方帳號）
+    在 Substack 開了正式 RSS（gdinvestornotes.substack.com/feed），逐集寫「節目回顧＋
+    個人心得」，實測隔日更新、單篇上萬字、含具體個股討論（例：EP687 完整分析 GOOG）。
+    這是目前唯一驗證過、內容夠格餵給抽取器的股癌替代來源。
+    歸屬顯示為第三方轉述，dashboard 上不會標成股癌本人發言。
+    另外查過 vocus.cc 上一組「逐字稿」帳號（ober），文章本身公開可讀，
+    但沒有正式的文章列表 API，只能反查前端內部端點才能自動發現新文章 ——
+    穩定性差、也接近規格要避免的「繞過」精神，故未採用。
 
   游庭皓的財經皓角（YouTube）
     每日盤前直播，標題含當日總經主題，可直接用。
@@ -16,6 +25,9 @@
   JC財經觀點／財女珍妮（YouTube）
     標題直接帶股票代號（例：「訂單爆發，股價卻不漲？ #NBIS #CSCO #COHR #CBRS」），
     是目前訊號密度最高的自動來源。
+
+未採用 Threads／Instagram：兩者皆屬 Meta 系列產品，無官方 RSS，
+自動化存取的性質與風險跟 CLAUDE.md 鐵則 1 禁止的 Facebook 相同，故一併排除。
 """
 from __future__ import annotations
 
@@ -31,10 +43,15 @@ from ..http import FetchError
 
 ATOM = "http://www.w3.org/2005/Atom"
 MRSS = "http://search.yahoo.com/mrss/"
+CONTENT_NS = "http://purl.org/rss/1.0/modules/content/"
+
+# 單篇筆記上看一萬字，超過這個長度只保留前段（心得與節目回顧通常在前面），
+# 避免單一來源把每次執行的 token 用量拉得不成比例。
+MAX_SUMMARY_CHARS = 6000
 
 TRANSCRIPTION_NOTE = (
-    "股癌的選股內容在音檔中（每集約 50 分鐘），RSS 的節目說明幾乎全是業配文案，"
-    "無法據以抽出標的。要全自動取得需加上語音轉文字，尚未實作。"
+    "股癌官方 RSS 的選股內容在音檔中（每集約 50 分鐘），節目說明幾乎全是業配文案，"
+    "無法據以抽出標的；語音轉文字尚未實作。改以下方「股人筆記」作為驗證過的替代來源。"
 )
 
 
@@ -45,7 +62,7 @@ class Feed:
         self.key = key
         self.name = name
         self.url = url
-        self.kind = kind        # "podcast" | "youtube"
+        self.kind = kind        # "podcast" | "youtube" | "substack"
         self.note = note
 
 
@@ -56,6 +73,14 @@ FEEDS = [
         url="https://feeds.soundon.fm/podcasts/954689a5-3096-43a4-a80b-7810b219cef3.xml",
         kind="podcast",
         note=TRANSCRIPTION_NOTE,
+    ),
+    Feed(
+        key="gooaye_notes",
+        # 刻意不叫「股癌」——這是第三方（Gordon）逐集寫的筆記，不是股癌官方帳號，
+        # 抓下來的內容代表的是筆記作者對節目的轉述與個人心得，不是股癌本人原話。
+        name="股人筆記（第三方股癌節目筆記，非官方逐字稿）",
+        url="https://gdinvestornotes.substack.com/feed",
+        kind="substack",
     ),
     Feed(
         key="yutinghao",
@@ -132,11 +157,15 @@ def _parse_rss(root, feed: Feed) -> List[FeedEntry]:
         return []
     entries = []
     for item in channel.findall("item"):
+        # Substack 的 description 只是預覽，全文在 content:encoded。
+        # podcast feed 兩者通常同一份，取得到哪個算哪個。
+        raw = item.findtext("{%s}encoded" % CONTENT_NS) or item.findtext("description") or ""
+        summary = _strip_html(raw)[:MAX_SUMMARY_CHARS]
         entries.append(FeedEntry(
             feed_key=feed.key,
             feed_name=feed.name,
             title=(item.findtext("title") or "").strip(),
-            summary=_strip_html(item.findtext("description") or ""),
+            summary=summary,
             published=_parse_date(item.findtext("pubDate") or ""),
             link=(item.findtext("link") or "").strip(),
         ))

@@ -1,0 +1,587 @@
+{
+  "generated_at": "2026-08-14 17:19",
+  "trading_day": "交易日 08/14",
+  "trigger_endpoint": "/api/update",
+  "sources": [
+    {
+      "name": "JC財經觀點（財女珍妮）",
+      "automation": "auto",
+      "channel": "Podcast RSS · YouTube UCdwPn2TO60Ec8QDIFRx50lQ · Threads @jcinsightgroup",
+      "tickers": [
+        {
+          "ticker": "AMD",
+          "name": "AMD",
+          "market": "US"
+        },
+        {
+          "ticker": "COHR",
+          "name": "Coherent",
+          "market": "US"
+        },
+        {
+          "ticker": "MU",
+          "name": "美光",
+          "market": "US"
+        },
+        {
+          "ticker": "CRDO",
+          "name": "Credo",
+          "market": "US"
+        },
+        {
+          "ticker": "LITE",
+          "name": "Lumentum",
+          "market": "US"
+        },
+        {
+          "ticker": "CRWV",
+          "name": "CoreWeave",
+          "market": "US"
+        },
+        {
+          "ticker": "MSFT",
+          "name": "微軟",
+          "market": "US"
+        },
+        {
+          "ticker": "GFS",
+          "name": "格羅方德",
+          "market": "US"
+        }
+      ],
+      "themes": "AI 光通訊定價權、資料中心、記憶體漲價"
+    },
+    {
+      "name": "股癌 Gooaye",
+      "automation": "auto",
+      "channel": "Substack RSS (gdinvestornotes) · Podcast RSS · 自動全擷取",
+      "tickers": [
+        {
+          "ticker": "2327",
+          "name": "國巨",
+          "market": "TWSE"
+        },
+        {
+          "ticker": "2330",
+          "name": "台積電",
+          "market": "TWSE"
+        },
+        {
+          "ticker": "AMD",
+          "name": "AMD",
+          "market": "US"
+        },
+        {
+          "ticker": "IFX",
+          "name": "英飛凌",
+          "market": "US"
+        }
+      ],
+      "themes": "最新自動擷取主題: 股癌EP687 —— 學習筆記 (Thu, 13 Aug 2026) | 股癌EP686 —— 學習筆記 (Mon, 10 Aug 2026)"
+    },
+    {
+      "name": "游庭皓的財經號角",
+      "automation": "semi",
+      "channel": "YouTube UC0lbAQVpenvfA2QqzsRtL_g（每日盤前 08:30 直播）",
+      "tickers": [],
+      "themes": "通膨與債市、晶片股評價、AI 是否恐慌過頭"
+    },
+    {
+      "name": "大叔美股筆記",
+      "automation": "manual",
+      "channel": "Substack unclestocknotes · Threads · IG（深度文多在付費牆）",
+      "tickers": [],
+      "themes": "美中貿易戰、關稅延長、地緣政治"
+    }
+  ],
+  "new_candidates": [
+    {
+      "ticker": "CRDO",
+      "name": "Credo"
+    },
+    {
+      "ticker": "LITE",
+      "name": "Lumentum"
+    },
+    {
+      "ticker": "CRWV",
+      "name": "CoreWeave"
+    },
+    {
+      "ticker": "GFS",
+      "name": "格羅方德"
+    }
+  ],
+  "must_verify": [
+    "國巨 2026Q1 EPS 3.9 元「年減 64%」與 2025 全年 EPS 11.51 元存在矛盾，未釐清前近四季 EPS 估值可能失真",
+    "花旗「4.3 個股本」的面額基準（1 拆 4 後嚴格算為 10.75 元，新聞慣例為 43 元）",
+    "國巨每股淨值 321.19 元推得 ROE 僅 3.96%，與淨利率 21.06% 矛盾",
+    "本頁所有倍數為手選參數，非真實河流圖分位，絕對水準須打折"
+  ],
+  "securities": [
+    {
+      "ticker": "2327",
+      "name": "國巨",
+      "market": "TWSE",
+      "price": 662.0,
+      "change": 9.97,
+      "price_date": "08/14",
+      "price_source": "TWSE OpenAPI",
+      "theses": [
+        {
+          "source": "花旗環球",
+          "stance": "bullish",
+          "ref": "6/8",
+          "points": [
+            "目標價由 495 元拉升至 1,500 元，預估 2028 年賺進 4.3 個股本。",
+            "並非單一產品漲價：除 MLCC 外，晶片電阻與鉭電容也因 AI 供電架構升級而看漲。",
+            "日韓同業限制標準型產品線、轉為優先生產高容量 AI 元件，讓國巨填補外溢需求並觸發進一步漲價。將被動元件定位為「下一個記憶體」。"
+          ]
+        },
+        {
+          "source": "股癌 Gooaye",
+          "stance": "bearish",
+          "ref": "EP661 / EP671",
+          "points": [
+            "EP661：最缺的料是高規 MLCC 47uF，由三星與 Murata 主供；國巨等台系做的是 22uF，規格只有一半——這條邏輯不是台系直接受惠。",
+            "EP671：族群已由「半信轉全信」，此時技術面權重大於基本面；已見中小型標的出現大倒貨。",
+            "EP680 起轉防守，減少個股投機、建議維持零槓桿。"
+          ]
+        },
+        {
+          "source": "本土券商（兩家）",
+          "stance": "bearish",
+          "ref": "—",
+          "points": [
+            "目標價 346–400 元，2026 年 EPS 預估 16.82–18.94 元。與外資差距達 4.3 倍。"
+          ]
+        }
+      ],
+      "news": [
+        {
+          "text": "5 月合併營收 150.58 億元創單月歷史新高、連三月刷新；前五月累計 672.63 億元年增 27.35%"
+        },
+        {
+          "text": "7/1 起對部分電容產品全面漲價，涉及產品占營收四成以上"
+        },
+        {
+          "text": "6/30 傳 3,880 萬元違約交割；7 月上旬再爆 13 家券商申報合計 4,131 萬元",
+          "alert": true
+        },
+        {
+          "text": "7/31 完成庫藏股註銷變更登記；8/4 子公司 YAGEO (HONG KONG) 決議減資",
+          "alert": true
+        },
+        {
+          "text": "股價軌跡：52 週低 132.50 → 6 月高 1,220 → 8/13 收 662（距高點 −45.7%）"
+        }
+      ],
+      "models": {
+        "pe": {
+          "low": 120,
+          "high": 576,
+          "applicable": true
+        },
+        "pb": {
+          "low": 161,
+          "high": 482,
+          "applicable": true
+        },
+        "peg": {
+          "low": 64,
+          "high": 320,
+          "applicable": true
+        },
+        "ddm": {
+          "low": 146,
+          "high": 400,
+          "applicable": true
+        },
+        "dcf": {
+          "applicable": false
+        }
+      },
+      "implied_pe_2028": 19.3,
+      "divergence_cv": 0.31,
+      "models_below_price": 4,
+      "models_usable": 4,
+      "watch_score": null,
+      "watch_max": 7,
+      "warnings": [
+        "循環股：獲利高峰時 P/E 最低",
+        "目標價分歧 4.3 倍"
+      ],
+      "missing": [
+        "分點資料未提供",
+        "DCF 資料缺漏"
+      ],
+      "action": {
+        "notes": [
+          "核心矛盾：最早看多被動元件的股癌，反而在規格層級提出台系不直接受惠、且已進入技術面階段的警告。",
+          "可觀察：8/13 漲停伴隨 44,702 張成交量，需確認隔日能否守住；漲停後隔日開高走低是出貨的典型型態。",
+          "領先指標：目標價分歧的收斂方向——本土上修＝敘事被驗證；外資下修＝敘事破裂。",
+          "距 1,220 高點仍 −45.7%，套牢賣壓重；違約交割紀錄顯示先前槓桿參與者已被清洗。",
+          "在第 3.5 節四項矛盾解除前，這不是適合重壓的標的。"
+        ]
+      }
+    },
+    {
+      "ticker": "2308",
+      "name": "台達電",
+      "market": "TWSE",
+      "price": 1885.0,
+      "change": 5.31,
+      "price_date": "08/14",
+      "price_source": "TWSE OpenAPI",
+      "theses": [
+        {
+          "source": "外資（多家）",
+          "stance": "bullish",
+          "ref": "—",
+          "points": [
+            "上修 2026–2028 年 EPS 至 41.5 元至 98.5 元，並有美系大行以 42 倍本益比評價 2027 年 EPS。"
+          ]
+        },
+        {
+          "source": "四個指定來源",
+          "stance": "neutral",
+          "ref": "—",
+          "points": [
+            "本期均無台達電的個股深度論述；股癌的「AI 電力／power」族群提及與之相關。此為老爺自選標的。"
+          ]
+        }
+      ],
+      "news": [
+        {
+          "text": "資料中心電源業務占比升至 40%，月營收年成長 37.6% 創歷史新高"
+        },
+        {
+          "text": "8/3 公告董事會決議桃園一廠重建相關事宜"
+        },
+        {
+          "text": "FindBillion 模型預估 EPS 24.8 元（衰退）vs 當季 9.68 元年化 38.7 元（成長），方向相反差 56%",
+          "alert": true
+        },
+        {
+          "text": "股價軌跡：52 週低 619 → 5/27 高 2,585 → 8/13 收 1,885（距高點 −27.1%）"
+        }
+      ],
+      "models": {
+        "pe": {
+          "low": 786,
+          "high": 1414,
+          "applicable": true
+        },
+        "pb": {
+          "low": 565,
+          "high": 1583,
+          "applicable": true
+        },
+        "peg": {
+          "low": 480,
+          "high": 1600,
+          "applicable": true
+        },
+        "ddm": {
+          "low": 387,
+          "high": 1160,
+          "applicable": true
+        },
+        "dcf": {
+          "applicable": false
+        }
+      },
+      "implied_pe_2028": 23.2,
+      "divergence_cv": 0.26,
+      "models_below_price": 4,
+      "models_usable": 4,
+      "watch_score": null,
+      "watch_max": 7,
+      "warnings": [
+        "殖利率法對高成長期公司系統性低估"
+      ],
+      "missing": [
+        "分點資料未提供",
+        "DCF 資料缺漏"
+      ],
+      "action": {
+        "notes": [
+          "ROE 27.79% 紮實；隱含 2028 年 23.2 倍對 EPS 兩年 CAGR 54% 的公司站得住腳。",
+          "資料中心電源是資本支出驅動，能見度高於被動元件的補庫存。",
+          "現價已落在 A3 樂觀情境內，不存在便宜可撿——目前價格已需要遠期預估兌現。",
+          "關鍵追蹤：98.5 元的 2028 年預估會不會被下修。這比股價重要得多，建議每次法說後查核。"
+        ]
+      }
+    },
+    {
+      "ticker": "MU",
+      "name": "美光",
+      "market": "US",
+      "price": 949.83,
+      "change": 9.36,
+      "price_date": "08/14",
+      "price_source": "Yahoo Finance",
+      "theses": [
+        {
+          "source": "股癌 Gooaye",
+          "stance": "bullish",
+          "ref": "輪動路徑",
+          "points": [
+            "記憶體為輪動路徑第二棒：AI 主題 → 記憶體 → 被動元件 → 三五族 → 特化材料 → PCB／載板。",
+            "多次提及記憶體漲價與 HBM 產能排擠對下游的成本壓力。"
+          ]
+        },
+        {
+          "source": "市場定價",
+          "stance": "bearish",
+          "ref": "隱含倍數",
+          "points": [
+            "隱含 2028 年僅 4.3 倍，代表市場根本不採信 UBS 的 265.65 美元預估。",
+            "反推市場隱含的 2028 年 EPS 約 113 美元，僅為 UBS 的 43%。"
+          ]
+        }
+      ],
+      "news": [
+        {
+          "text": "UBS 預估 2028 年 EPS 達 265.65 美元"
+        },
+        {
+          "text": "GuruFocus GF Value 434.54 美元（顯著高估）vs 46 位分析師目標均值 1,501.98 美元——3.5 倍分歧",
+          "alert": true
+        },
+        {
+          "text": "52 週報酬 +624.20%；距 6 月高點約 −23%；近一月 −10%～−12%，相對強度輸給 SK 海力士",
+          "alert": true
+        },
+        {
+          "text": "下次財報：2026/9/22 盤後"
+        }
+      ],
+      "models": {
+        "pe": {
+          "low": 525,
+          "high": 1650,
+          "applicable": true
+        },
+        "pb": {
+          "low": 398,
+          "high": 1327,
+          "applicable": true
+        },
+        "peg": {
+          "applicable": false
+        },
+        "ddm": {
+          "applicable": false
+        },
+        "dcf": {
+          "low": 240,
+          "high": 1270,
+          "applicable": true
+        }
+      },
+      "implied_pe_2028": 4.3,
+      "divergence_cv": 0.18,
+      "models_below_price": 2,
+      "models_usable": 3,
+      "watch_score": 2,
+      "watch_max": 5,
+      "warnings": [
+        "循環股陷阱：低本益比出現在獲利高峰",
+        "CV 樣本不足（僅 3 模型可用）"
+      ],
+      "missing": [
+        "PEG 不適用",
+        "DDM 不適用（殖利率 0.06%）"
+      ],
+      "action": {
+        "notes": [
+          "A3 錨定顯示低於中性值 47%，但這正是循環股的教科書陷阱——不要用 A3 錨定看記憶體股。",
+          "較符合歷史行為的是 A1：追蹤 EPS × 8–18 倍 = 362–814 美元。現價 920.50 高於該區間上緣。",
+          "動能三項同向轉弱：距高點 −23%、近一月 −10~12%、相對強度輸給 SK 海力士。",
+          "9/22 財報是關鍵事件，事件前建立部位不宜過重。"
+        ]
+      }
+    },
+    {
+      "ticker": "AMD",
+      "name": "AMD",
+      "market": "US",
+      "price": 483.01,
+      "change": 1.83,
+      "price_date": "08/14",
+      "price_source": "Yahoo Finance",
+      "theses": [
+        {
+          "source": "JC財經觀點",
+          "stance": "bullish",
+          "ref": "Threads",
+          "points": [
+            "Q2 營收 115 億美元年增 50%；資料中心 67 億年增 107%、占整體 58%；Q3 預估 130 億年增約 41%。",
+            "EPYC 伺服器 CPU 在雲端與企業客戶銷售均成長逾 70%；AMD 自估 2026 下半年伺服器營收成長逾 80%、2027 年再成長逾 70%。",
+            "市場都盯 AI GPU，但 EPYC 毛利率較高，能抵銷 AI 系統初期量產的成本壓力。",
+            "Helios 機架整合 MI450、Venice CPU、Pensando 與 ROCm，Q3 出貨、Q4 放量，2027 年才真正高速成長。"
+          ]
+        },
+        {
+          "source": "股癌 Gooaye",
+          "stance": "bullish",
+          "ref": "EP681 / EP683",
+          "points": [
+            "提及 AMD Venice CPU 與 Agentic AI 帶動的供應鏈瓶頸；看好推論需求帶動 CPU 的長線趨勢。"
+          ]
+        }
+      ],
+      "news": [
+        {
+          "text": "Q2 資料中心營收 +57%、自由現金流 +253% YoY；毛利率 55%，Q3 指引 56%"
+        },
+        {
+          "text": "ROIC 僅 9.77%，但市場給 40 倍以上預估本益比",
+          "alert": true
+        },
+        {
+          "text": "內部人近 90 筆交易偏向淨賣出",
+          "alert": true
+        },
+        {
+          "text": "預估本益比五來源分歧達 77%（43.52x 至 76.92x），共識本身極不穩定",
+          "alert": true
+        }
+      ],
+      "models": {
+        "pe": {
+          "low": 236,
+          "high": 473,
+          "applicable": true
+        },
+        "pb": {
+          "low": 262,
+          "high": 524,
+          "applicable": true
+        },
+        "peg": {
+          "low": 334,
+          "high": 635,
+          "applicable": true
+        },
+        "ddm": {
+          "applicable": false
+        },
+        "dcf": {
+          "low": 175,
+          "high": 457,
+          "applicable": true
+        }
+      },
+      "implied_pe_2028": 29.0,
+      "divergence_cv": 0.23,
+      "models_below_price": 2,
+      "models_usable": 4,
+      "watch_score": 4,
+      "watch_max": 5,
+      "warnings": [
+        "無外部 2028 年預估，FY28E 為推導值"
+      ],
+      "missing": [
+        "DDM 不適用（不配息）"
+      ],
+      "action": {
+        "notes": [
+          "現價僅高於 A3 中性值 3%，是五檔中最接近模型中性的。",
+          "唯一有雙來源交叉驗證的標的：JC 與股癌對 EPYC／CPU 的論述方向一致。",
+          "風險：ROIC 9.77% 偏低、內部人淨賣出、預估本益比共識分歧 77%。"
+        ]
+      }
+    },
+    {
+      "ticker": "COHR",
+      "name": "Coherent",
+      "market": "US",
+      "price": 327.23,
+      "change": -0.41,
+      "price_date": "08/14",
+      "price_source": "Yahoo Finance",
+      "theses": [
+        {
+          "source": "JC財經觀點",
+          "stance": "bullish",
+          "ref": "Podcast",
+          "points": [
+            "節目直指「AI 光通訊升級下，誰掌握真正的定價權？」。",
+            "業界共識是五年內 AI 資料中心全面光學化，銅纜 AEC 護城河會被侵蝕——這正是 COHR 的順風。"
+          ]
+        }
+      ],
+      "news": [
+        {
+          "text": "FY2026 營收 71.2 億美元年增 22.5%；GAAP 稀釋 EPS 4.12 美元（前年虧損 0.52）；非 GAAP 5.61 美元年增 59%"
+        },
+        {
+          "text": "FY27 Q1 指引：營收 22–24 億美元、非 GAAP EPS 1.85–2.05 美元；債務槓桿由 2.0x 降至 0.7x"
+        },
+        {
+          "text": "股數年增 16.99%——最隱形的價值流失",
+          "alert": true
+        },
+        {
+          "text": "TTM 自由現金流為負 5.38 億美元（資本支出 6.79 億 vs 營運現金流 1.40 億）",
+          "alert": true
+        },
+        {
+          "text": "多數聚合網站仍用改版前 EPS，顯示本益比 95x–180x 全部錯誤；實際約 78.9 倍（GAAP）",
+          "alert": true
+        },
+        {
+          "text": "上漲催化劑之一為 FCC 擬禁中國光模組進口提案——政策風險，非基本面",
+          "alert": true
+        }
+      ],
+      "models": {
+        "pe": {
+          "low": 195,
+          "high": 441,
+          "applicable": true
+        },
+        "pb": {
+          "low": 170,
+          "high": 396,
+          "applicable": true
+        },
+        "peg": {
+          "low": 308,
+          "high": 502,
+          "applicable": true
+        },
+        "ddm": {
+          "applicable": false
+        },
+        "dcf": {
+          "low": 100,
+          "high": 287,
+          "applicable": true
+        }
+      },
+      "implied_pe_2028": 32.5,
+      "divergence_cv": 0.28,
+      "models_below_price": 3,
+      "models_usable": 4,
+      "watch_score": 2,
+      "watch_max": 5,
+      "warnings": [
+        "股數年增 16.99%",
+        "自由現金流為負，DCF 無可用基期"
+      ],
+      "missing": [
+        "DDM 不適用（不配息）"
+      ],
+      "action": {
+        "notes": [
+          "隱含 2028 年 32.5 倍為全組最高。",
+          "加上股數年增 16.99% 與自由現金流為負，是五檔中財務結構最需要留意的。",
+          "上漲催化劑之一是 FCC 政策提案——政策可逆，不宜視為基本面。"
+        ]
+      }
+    }
+  ]
+}

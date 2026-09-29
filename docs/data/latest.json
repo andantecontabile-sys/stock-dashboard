@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-29 09:22",
+  "generated_at": "2026-09-29 23:11",
   "trading_day": "交易日 09/29",
   "trigger_endpoint": "/api/update",
   "sources": [
@@ -317,8 +317,8 @@
       "ticker": "MU",
       "name": "美光",
       "market": "US",
-      "price": 1053.98,
-      "change": -2.46,
+      "price": 1074.94,
+      "change": -0.68,
       "price_date": "09/29",
       "price_source": "Yahoo Finance",
       "theses": [
@@ -407,8 +407,8 @@
       "ticker": "AMD",
       "name": "AMD",
       "market": "US",
-      "price": 607.87,
-      "change": -3.4,
+      "price": 616.35,
+      "change": -2.26,
       "price_date": "09/29",
       "price_source": "Yahoo Finance",
       "theses": [
@@ -498,8 +498,8 @@
       "ticker": "COHR",
       "name": "Coherent",
       "market": "US",
-      "price": 282.45,
-      "change": -2.81,
+      "price": 297.31,
+      "change": 0.5,
       "price_date": "09/29",
       "price_source": "Yahoo Finance",
       "theses": [

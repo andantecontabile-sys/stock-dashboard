@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-02 23:08",
-  "trading_day": "交易日 10/02",
+  "generated_at": "2026-10-03 08:51",
+  "trading_day": "交易日 10/03",
   "trigger_endpoint": "/api/update",
   "sources": [
     {
@@ -123,9 +123,9 @@
       "ticker": "2327",
       "name": "國巨",
       "market": "TWSE",
-      "price": 602.0,
-      "change": 9.85,
-      "price_date": "10/02",
+      "price": 626.0,
+      "change": 3.99,
+      "price_date": "10/03",
       "price_source": "TWSE OpenAPI",
       "theses": [
         {
@@ -229,9 +229,9 @@
       "ticker": "2308",
       "name": "台達電",
       "market": "TWSE",
-      "price": 1905.0,
-      "change": 0.79,
-      "price_date": "10/02",
+      "price": 1885.0,
+      "change": -1.05,
+      "price_date": "10/03",
       "price_source": "TWSE OpenAPI",
       "theses": [
         {
@@ -317,9 +317,9 @@
       "ticker": "MU",
       "name": "美光",
       "market": "US",
-      "price": 1081.67,
-      "change": 1.55,
-      "price_date": "10/02",
+      "price": 1074.89,
+      "change": 0.92,
+      "price_date": "10/03",
       "price_source": "Yahoo Finance",
       "theses": [
         {
@@ -407,9 +407,9 @@
       "ticker": "AMD",
       "name": "AMD",
       "market": "US",
-      "price": 637.75,
-      "change": 4.25,
-      "price_date": "10/02",
+      "price": 633.91,
+      "change": 3.62,
+      "price_date": "10/03",
       "price_source": "Yahoo Finance",
       "theses": [
         {
@@ -498,9 +498,9 @@
       "ticker": "COHR",
       "name": "Coherent",
       "market": "US",
-      "price": 335.37,
-      "change": 16.52,
-      "price_date": "10/02",
+      "price": 337.04,
+      "change": 17.11,
+      "price_date": "10/03",
       "price_source": "Yahoo Finance",
       "theses": [
         {

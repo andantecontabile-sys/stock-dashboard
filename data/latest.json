@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-17 08:05",
-  "trading_day": "交易日 10/17",
+  "generated_at": "2026-10-19 23:58",
+  "trading_day": "交易日 10/19",
   "trigger_endpoint": "/api/update",
   "sources": [
     {
@@ -125,7 +125,7 @@
       "market": "TWSE",
       "price": 567.0,
       "change": -1.05,
-      "price_date": "10/17",
+      "price_date": "10/19",
       "price_source": "TWSE OpenAPI",
       "theses": [
         {
@@ -231,7 +231,7 @@
       "market": "TWSE",
       "price": 1635.0,
       "change": 0.31,
-      "price_date": "10/17",
+      "price_date": "10/19",
       "price_source": "TWSE OpenAPI",
       "theses": [
         {
@@ -317,9 +317,9 @@
       "ticker": "MU",
       "name": "美光",
       "market": "US",
-      "price": 878.84,
-      "change": -3.86,
-      "price_date": "10/17",
+      "price": 922.93,
+      "change": -0.89,
+      "price_date": "10/19",
       "price_source": "Yahoo Finance",
       "theses": [
         {
@@ -407,9 +407,9 @@
       "ticker": "AMD",
       "name": "AMD",
       "market": "US",
-      "price": 528.75,
-      "change": -7.37,
-      "price_date": "10/17",
+      "price": 550.76,
+      "change": -2.04,
+      "price_date": "10/19",
       "price_source": "Yahoo Finance",
       "theses": [
         {
@@ -498,9 +498,9 @@
       "ticker": "COHR",
       "name": "Coherent",
       "market": "US",
-      "price": 232.9,
-      "change": -11.55,
-      "price_date": "10/17",
+      "price": 240.91,
+      "change": -3.87,
+      "price_date": "10/19",
       "price_source": "Yahoo Finance",
       "theses": [
         {

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-20 01:48",
+  "generated_at": "2026-11-20 10:46",
   "trading_day": "交易日 11/20",
   "trigger_endpoint": "/api/update",
   "sources": [
@@ -77,7 +77,7 @@
           "market": "US"
         }
       ],
-      "themes": "最新自動擷取主題: 股癌EP687 —— 學習筆記 (Thu, 13 Aug 2026) | 股癌EP686 —— 學習筆記 (Mon, 10 Aug 2026)"
+      "themes": "最新自動擷取主題: 股癌EP715 —— 學習筆記 (Thu, 19 Nov 2026) | 股癌EP712  —— 學習筆記 (Tue, 10 Nov 2026)"
     },
     {
       "name": "游庭皓的財經號角",
@@ -126,7 +126,7 @@
       "price": 322.5,
       "change": -8.38,
       "price_date": "11/20",
-      "price_source": "Yahoo Finance",
+      "price_source": "TWSE OpenAPI",
       "theses": [
         {
           "source": "花旗環球",
@@ -232,7 +232,7 @@
       "price": 1000.0,
       "change": -5.66,
       "price_date": "11/20",
-      "price_source": "Yahoo Finance",
+      "price_source": "TWSE OpenAPI",
       "theses": [
         {
           "source": "外資（多家）",
@@ -317,8 +317,8 @@
       "ticker": "MU",
       "name": "美光",
       "market": "US",
-      "price": 701.49,
-      "change": -1.53,
+      "price": 690.44,
+      "change": -3.09,
       "price_date": "11/20",
       "price_source": "Yahoo Finance",
       "theses": [
@@ -407,8 +407,8 @@
       "ticker": "AMD",
       "name": "AMD",
       "market": "US",
-      "price": 487.44,
-      "change": -3.17,
+      "price": 489.19,
+      "change": -2.82,
       "price_date": "11/20",
       "price_source": "Yahoo Finance",
       "theses": [
@@ -498,8 +498,8 @@
       "ticker": "COHR",
       "name": "Coherent",
       "market": "US",
-      "price": 217.95,
-      "change": 3.36,
+      "price": 214.94,
+      "change": 1.93,
       "price_date": "11/20",
       "price_source": "Yahoo Finance",
       "theses": [

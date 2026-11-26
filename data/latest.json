@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-26 11:51",
-  "trading_day": "交易日 11/26",
+  "generated_at": "2026-11-27 02:42",
+  "trading_day": "交易日 11/27",
   "trigger_endpoint": "/api/update",
   "sources": [
     {
@@ -125,7 +125,7 @@
       "market": "TWSE",
       "price": 309.0,
       "change": -9.38,
-      "price_date": "11/26",
+      "price_date": "11/27",
       "price_source": "TWSE OpenAPI",
       "theses": [
         {
@@ -231,7 +231,7 @@
       "market": "TWSE",
       "price": 1055.0,
       "change": -2.76,
-      "price_date": "11/26",
+      "price_date": "11/27",
       "price_source": "TWSE OpenAPI",
       "theses": [
         {
@@ -319,7 +319,7 @@
       "market": "US",
       "price": 601.25,
       "change": -15.04,
-      "price_date": "11/26",
+      "price_date": "11/27",
       "price_source": "Yahoo Finance",
       "theses": [
         {
@@ -409,7 +409,7 @@
       "market": "US",
       "price": 406.03,
       "change": -10.46,
-      "price_date": "11/26",
+      "price_date": "11/27",
       "price_source": "Yahoo Finance",
       "theses": [
         {
@@ -500,7 +500,7 @@
       "market": "US",
       "price": 196.19,
       "change": -9.09,
-      "price_date": "11/26",
+      "price_date": "11/27",
       "price_source": "Yahoo Finance",
       "theses": [
         {

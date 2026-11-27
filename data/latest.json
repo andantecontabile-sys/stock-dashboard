@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-27 02:42",
+  "generated_at": "2026-11-27 11:53",
   "trading_day": "交易日 11/27",
   "trigger_endpoint": "/api/update",
   "sources": [
@@ -123,8 +123,8 @@
       "ticker": "2327",
       "name": "國巨",
       "market": "TWSE",
-      "price": 309.0,
-      "change": -9.38,
+      "price": 339.5,
+      "change": 9.87,
       "price_date": "11/27",
       "price_source": "TWSE OpenAPI",
       "theses": [
@@ -229,8 +229,8 @@
       "ticker": "2308",
       "name": "台達電",
       "market": "TWSE",
-      "price": 1055.0,
-      "change": -2.76,
+      "price": 1120.0,
+      "change": 6.16,
       "price_date": "11/27",
       "price_source": "TWSE OpenAPI",
       "theses": [

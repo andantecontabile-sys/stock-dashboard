@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-28 02:32",
+  "generated_at": "2026-11-28 11:39",
   "trading_day": "交易日 11/28",
   "trigger_endpoint": "/api/update",
   "sources": [
@@ -123,8 +123,8 @@
       "ticker": "2327",
       "name": "國巨",
       "market": "TWSE",
-      "price": 339.5,
-      "change": 9.87,
+      "price": 344.0,
+      "change": 1.33,
       "price_date": "11/28",
       "price_source": "TWSE OpenAPI",
       "theses": [
@@ -229,8 +229,8 @@
       "ticker": "2308",
       "name": "台達電",
       "market": "TWSE",
-      "price": 1120.0,
-      "change": 6.16,
+      "price": 1125.0,
+      "change": 0.45,
       "price_date": "11/28",
       "price_source": "TWSE OpenAPI",
       "theses": [
@@ -498,8 +498,8 @@
       "ticker": "COHR",
       "name": "Coherent",
       "market": "US",
-      "price": 219.58,
-      "change": 11.89,
+      "price": 223.79,
+      "change": 14.04,
       "price_date": "11/28",
       "price_source": "Yahoo Finance",
       "theses": [
